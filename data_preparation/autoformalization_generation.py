@@ -32,7 +32,7 @@ class FewshotPromptManager:
         
         self.max_sequence_len = 4096 # necessary
         self.batch_size = 1
-        self.tokenizer = AutoTokenizer.from_pretrained("/import/snvm-sc-scratch2/xueliangz/checkpoints/deepseek-math-7b-base")
+        self.tokenizer = AutoTokenizer.from_pretrained(f"{self.repo_root}/checkpoints/DeepSeek-Prover-V1.5-Base")
 
         self.filename_extension = "jsonl" # necessary
         current_dir = os.path.dirname(os.path.abspath(__file__))

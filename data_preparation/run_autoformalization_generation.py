@@ -12,25 +12,25 @@ def import_class(class_name, module_name):
     class_obj = getattr(module, class_name)
     return class_obj
 
-def get_pef(model_name_or_path):
-    if model_name_or_path == "/import/snvm-sc-scratch2/xueliangz/checkpoints/deepseek-math-7b-base":
-        return "/import/snvm-sc-scratch2/xueliangz/Data/pef_data/deepseek_math/inference_ts_1socket/generative_hook_216471_17_41_38.pef"
-    elif model_name_or_path == "/import/snvm-sc-podscratch4/xueliangz/checkpoints/Meta-Llama-3-8B-Instruct":
-        return "/import/snvm-sc-podscratch4/xueliangz/pef/llama3_8b_pef"
-    elif model_name_or_path == "/import/snvm-sc-podscratch4/xueliangz/checkpoints/Meta-Llama-3-8B":
-        return "/import/snvm-sc-podscratch4/xueliangz/pef/llama3_8b_pef"
-    else:
-        raise ValueError
-
-def get_virtual_env(model_name_or_path):
-    if model_name_or_path == "/import/snvm-sc-scratch2/xueliangz/checkpoints/deepseek-math-7b-base":
-        return "/import/snvm-sc-scratch2/xueliangz/software/sambaflow/apps/nlp/transformers_on_rdu/llama_venv/venv/"
-    elif model_name_or_path == "/import/snvm-sc-podscratch4/xueliangz/checkpoints/Meta-Llama-3-8B-Instruct":
-        return "/import/snvm-sc-podscratch4/xueliangz/batched_inference/software/sambaflow/apps/modelzoo/tests/venv/"
-    elif model_name_or_path == "/import/snvm-sc-podscratch4/xueliangz/checkpoints/Meta-Llama-3-8B":
-        return "/import/snvm-sc-podscratch4/xueliangz/batched_inference/software/sambaflow/apps/modelzoo/tests/venv/"
-    else:
-        raise ValueError
+#def get_pef(model_name_or_path):
+#    if model_name_or_path == "/home/qiyuan/checkpoints/deepseek-math-7b-base":
+#        return "/home/qiyuan/Data/pef_data/deepseek_math/inference_ts_1socket/generative_hook_216471_17_41_38.pef"
+#    elif model_name_or_path == "/home/qiyuan/checkpoints/Meta-Llama-3-8B-Instruct":
+#        return "/home/qiyuan/pef/llama3_8b_pef"
+#    elif model_name_or_path == "/home/qiyuan/checkpoints/Meta-Llama-3-8B":
+#        return "/home/qiyuan/pef/llama3_8b_pef"
+#    else:
+#        raise ValueError
+#
+#def get_virtual_env(model_name_or_path):
+#    if model_name_or_path == "/home/qiyuan/checkpoints/deepseek-math-7b-base":
+#        return "/home/qiyuan/software/sambaflow/apps/nlp/transformers_on_rdu/llama_venv/venv/"
+#    elif model_name_or_path == "/home/qiyuan/checkpoints/Meta-Llama-3-8B-Instruct":
+#        return "/home/qiyuan/batched_inference/software/sambaflow/apps/modelzoo/tests/venv/"
+#    elif model_name_or_path == "/home/qiyuan/checkpoints/Meta-Llama-3-8B":
+#        return "/home/qiyuan/batched_inference/software/sambaflow/apps/modelzoo/tests/venv/"
+#    else:
+#        raise ValueError
 
 
 
@@ -48,10 +48,10 @@ def run(exp_name, num_workers, endpoint_manager_name, model_name_or_path, prompt
     endpoint_manager_class = import_class(endpoint_manager_name, "endpoint_utils")
     endpoint_manager = endpoint_manager_class(
         model_name_or_path=model_name_or_path,
-        pef=get_pef(model_name_or_path),
-        cache_dir="/import/snvm-sc-scratch2/xueliangz/cache",
+        #pef=get_pef(model_name_or_path),
+        cache_dir="/home/qiyuan/cache",
         num_endpoints=true_num_endpoints,
-        virtual_env=get_virtual_env(model_name_or_path),
+        #virtual_env=get_virtual_env(model_name_or_path),
     )
     
     all_endpoints = endpoint_manager.start_endpoints()
@@ -115,10 +115,10 @@ def run_statement_validation(exp_name, num_workers, endpoint_manager_name, model
     endpoint_manager_class = import_class(endpoint_manager_name, "endpoint_utils")
     endpoint_manager = endpoint_manager_class(
         model_name_or_path=model_name_or_path,
-        pef=get_pef(model_name_or_path),
-        cache_dir="/import/snvm-sc-scratch2/xueliangz/cache",
+        #pef=get_pef(model_name_or_path),
+        cache_dir="/home/qiyuan/cache",
         num_endpoints=true_num_endpoints,
-        virtual_env=get_virtual_env(model_name_or_path),
+        #virtual_env=get_virtual_env(model_name_or_path),
     )
     
     all_endpoints = endpoint_manager.start_endpoints()
@@ -182,10 +182,10 @@ def run_subgoal_proof_generation(exp_name, num_workers, endpoint_manager_name, m
     endpoint_manager_class = import_class(endpoint_manager_name, "endpoint_utils")
     endpoint_manager = endpoint_manager_class(
         model_name_or_path=model_name_or_path,
-        pef=get_pef(model_name_or_path),
-        cache_dir="/import/snvm-sc-scratch2/xueliangz/cache",
+        #pef=get_pef(model_name_or_path),
+        cache_dir="/home/qiyuan/cache",
         num_endpoints=true_num_endpoints,
-        virtual_env=get_virtual_env(model_name_or_path),
+        #virtual_env=get_virtual_env(model_name_or_path),
     )
     
     all_endpoints = endpoint_manager.start_endpoints()
